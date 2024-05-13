@@ -1,14 +1,18 @@
-import { Film, SWAPIResponse } from "@/app/interfaces/Film";
+import { Film, SWAPIFilmResponse } from "@/app/interfaces/Film";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+type ServerError = {
+  message : string;
+};
+
+export async function GET(): Promise<NextResponse> {
   try {
     // Setting a variable to store the URL of a generic film image
     const genericImageUrl: string = '/film-image.jpg';
     
     // Fetching data from the Star Wars API (SWAPI) films endpoint and Parsing the JSON response
     const response: Response = await fetch('https://swapi.dev/api/films');
-    const data: SWAPIResponse = await response.json();    
+    const data: SWAPIFilmResponse = await response.json();    
 
     // Mapping over the results from the SWAPI films data
     const filmsData: Film[] = data.results.map((film): Film => {
@@ -27,7 +31,8 @@ export async function GET() {
 
     // Returning a JSON response with the films data
     return NextResponse.json({ films: filmsData });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+    const serverError: ServerError = { message: error instanceof Error ? error.message : "An unknown error occurred" };
+    return NextResponse.json(serverError, { status: 500 });
   }
 }
