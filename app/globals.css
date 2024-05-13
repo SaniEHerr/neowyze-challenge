@@ -31,6 +31,41 @@ body {
   background-attachment : fixed;
 }
 
+.star-wars-logo {
+  -webkit-text-stroke: 1px black;
+  text-shadow: 0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51),
+    -0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51);
+  transition: all 0.3s ease-in-out;
+}
+
+.star-wars-logo:hover {
+  -webkit-text-stroke: 1px #FFE81F;
+  text-shadow: 0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51),
+    -0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51);
+}
+
+.sani-link-styles {
+  -webkit-text-stroke: 1px white;
+  text-shadow: 0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51),
+    -0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51);
+  transition: all 0.3s ease-in-out;
+}
+
+.sani-link-styles:hover {
+  -webkit-text-stroke: 1px #FFE81F;
+  text-shadow: 0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51),
+    -0px 0px 6px rgba(255, 232, 31, 0.51),
+    0px 0px 6px rgba(255, 232, 31, 0.51);
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
