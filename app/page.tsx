@@ -2,7 +2,9 @@
 export default function Home() {
   return (
     <main>
-      Starting project
+      <h1 className="font-starjedi">
+        Neowyze Challenge
+      </h1>
     </main>
   );
 }
