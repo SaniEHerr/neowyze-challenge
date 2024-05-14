@@ -11,7 +11,7 @@ const Loading = () => {
         {skeleton.map((index: any) => (
           <div
             key={index}
-            className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 w-[236px] h-[400px] rounded-lg flex flex-col justify-between gap-2 animate-pulse duration-300"
+            className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 w-[236.79px] h-[408.42px] rounded-lg flex flex-col justify-between gap-2 animate-pulse duration-300"
           ></div>
         ))}
       </div>
