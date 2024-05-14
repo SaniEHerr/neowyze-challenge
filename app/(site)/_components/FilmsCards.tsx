@@ -36,7 +36,7 @@ const FilmsCards = ({ films }: FilmsCardsProps) => {
             {hoveredIndex === index && (
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm rounded-lg transition-opacity duration-300">
                 <Link href={`/films/${film.film_id}`} key={film.title}>
-                  <p className="text-white text-lg font-bold hover:underline p-2">VIEW MORE</p>
+                  <p className="text-white hover:text-[#FFE81F] transition-colors duration-300 text-lg font-bold hover:underline p-2">VIEW MORE</p>
                 </Link>
               </div>
             )}
