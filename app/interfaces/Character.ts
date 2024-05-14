@@ -7,10 +7,10 @@ export interface Character {
 
 export interface CharacterData {
   character_id : string;
-  name        : string;
-  eye_color   : string;
-  gender      : string;
-  image       : string;
+  name         : string;
+  eye_color    : string;
+  gender       : string;
+  image        : string;
 }
 
 export interface ResponseData {
@@ -28,4 +28,28 @@ export interface SwapiResponse {
   next     : string | null;
   previous : string | null;
   results  : Character[];
+}
+
+
+interface CharacterDetailData {
+  name       : string;
+  eye_color  : string;
+  hair_color : string;
+  skin_color : string;
+  birth_year : string;
+  height     : string;
+  mass       : string;
+  url        : string;
+}
+
+interface CharacterDetails {
+  characterId : string;
+  name        : string;
+  birth_year  : string;
+  height      : string;
+  mass        : string;
+  eye_color   : string;
+  hair_color  : string;
+  skin_color  : string;
+  image       : string;
 }
