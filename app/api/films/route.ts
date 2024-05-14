@@ -29,7 +29,7 @@ export async function GET(): Promise<NextResponse> {
       };
     });
 
-    // Returning a JSON response with the films data
+    // Return JSON response with the films data
     return NextResponse.json({ films: filmsData });
   } catch (error) {
     const serverError: ServerError = { message: error instanceof Error ? error.message : "An unknown error occurred" };
