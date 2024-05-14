@@ -1,6 +1,14 @@
 import { Character, SwapiResponse, ResponseData, CharacterData } from '@/app/interfaces/Character';
 import { NextResponse } from 'next/server';
 
+interface FilteredCharacterData {
+  character_id : string;
+  name         : string;
+  eye_color    : string;
+  gender       : string;
+  image        : string;
+}
+
 // This function fetches and returns all eye colors of characters
 async function fetchAllEyeColors() {
   // Create a set to store all eye colors
@@ -87,11 +95,11 @@ export async function GET(request: Request): Promise<NextResponse> {
     // Map filtered character data for presentation
     const charactersData: CharacterData[] = filteredCharacters.slice(startIndex, endIndex).map((character: Character) => {
       // Extract the character ID from its URL
-      const url = new URL(character.url);
+      const url: URL = new URL(character.url);
       const characterId = url.pathname.split('/').filter(segment => segment !== "").pop() || "";
 
       // Filter character properties
-      const filteredProperties: any = {
+      const filteredProperties: Partial<FilteredCharacterData> = {
         character_id: characterId,
         name: character.name,
         eye_color: character.eye_color,
@@ -101,13 +109,13 @@ export async function GET(request: Request): Promise<NextResponse> {
 
       // Remove properties with "n/a" and "unknown" values
       Object.keys(filteredProperties).forEach(key => {
-        if (filteredProperties[key] === "n/a" || filteredProperties[key] === "unknown") {
-          delete filteredProperties[key];
+        if (filteredProperties[key as keyof FilteredCharacterData] === "n/a" || filteredProperties[key as keyof FilteredCharacterData] === "unknown") {
+          delete filteredProperties[key as keyof FilteredCharacterData];
         }
       });
 
       // Return filtered character properties
-      return filteredProperties;
+      return filteredProperties as FilteredCharacterData;
     });
 
     // Prepare response data with pagination and character information
