@@ -1,6 +1,6 @@
 // import Filters from "../../_components/Filters"
 import CharactersCards from "../../_components/CharactersCards"
-// import Pagination from "../../_components/Pagination"
+import Pagination from "../../_components/Pagination"
 
 async function getCharacters(page: number, eye_color: string | undefined) {
   try {
@@ -38,11 +38,11 @@ const CharactersPage = async ({searchParams}: {searchParams: { [key: string]: st
         />
       </div>
       
-      {/* <Pagination 
+      <Pagination
         total_pages={total_pages}
         page={page}
         eye_color={eye_color}
-      /> */}
+      />
 
     </div>
   )
