@@ -23,7 +23,7 @@ const Loading = () => {
           {skeleton.map(( index: any) => {
 
             return (
-              <div key={index} className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg w-[272px] h-[95px] animate-pulse duration-300">
+              <div key={index} className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg w-[258.14px] h-[95.97px] animate-pulse duration-300">
                 <div className="flex items-center">
                   <div className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 w-[64px] h-[64px] rounded-full"></div>
 
