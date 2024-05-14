@@ -1,5 +1,4 @@
-import { Film } from "@/app/interfaces/Film";
-import FilmsCards from "../../_components/FilmCard";
+import FilmsCards from "../../_components/FilmsCards";
 
 async function getFilms() {
   try {

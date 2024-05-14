@@ -1,8 +1,6 @@
 import FilmCharactersList from "@/app/(site)/_components/FilmCharactersList";
 import FilmDetailsCard from "@/app/(site)/_components/FilmDetailsCard";
-import { CharacterData, FilmDetails } from "@/app/interfaces/Film";
-import Image from "next/image";
-import Link from "next/link";
+import { FilmDetails } from "@/app/interfaces/Film";
 
 async function getFilmDetails(filmId: string) {
   try {
