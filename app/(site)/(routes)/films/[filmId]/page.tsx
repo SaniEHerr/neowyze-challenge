@@ -23,7 +23,7 @@ const FilmByIdPage = async ({params}: { params: FilmParams }) => {
   
   return (
     <div className="flex flex-col gap-10 py-7">
-      <div className="flex flex-col justify-center items-center gap-4 bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
+      <div className="flex flex-col justify-center items-center w-fit mx-auto gap-4 bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm py-4 px-6 rounded-lg">
         <div className="flex flex-col justify-center items-center gap-1">
           <h1 className="text-4xl font-bold font-starjedi text-center">{filmDetails.title}</h1>
           <p className="font-bold text-2xl font-starjedi">Episode {filmDetails.episode_id}</p>
