@@ -20,7 +20,7 @@ const Pagination = ({ total_pages, page, eye_color }: PaginationProps) => {
     const buttons = [];
     
     // Logic for generate unique keys for each button
-    const generateUniqueKey = (prefix: any, index: any) => `${prefix}-${index}`;
+    const generateUniqueKey = (prefix: string, index: number) => `${prefix}-${index}`;
   
     if (total_pages <= 5) {
       for (let i = 1; i <= total_pages; i++) {
@@ -90,7 +90,7 @@ const Pagination = ({ total_pages, page, eye_color }: PaginationProps) => {
   };
 
   return (
-    <div className="flex justify-center gap-3 mt-8">
+    <div className="flex justify-center gap-3">
       <button
         onClick={() => handlePageChange(page > 1 ? page - 1 : 1)}
         className={`hidden sm:block border font-starjedi border-gray-300 px-4 py-2 rounded-md font-extrabold bg-zinc-700 transition-colors duration-150 disabled:pointer-events-none ${page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#ffe91f9c]'}`}
