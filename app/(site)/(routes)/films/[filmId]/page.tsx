@@ -1,3 +1,5 @@
+import FilmCharactersList from "@/app/(site)/_components/FilmCharactersList";
+import FilmDetailsCard from "@/app/(site)/_components/FilmDetailsCard";
 import { CharacterData, FilmDetails } from "@/app/interfaces/Film";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,54 +25,19 @@ const FilmByIdPage = async ({params}: { params: FilmParams }) => {
   
   return (
     <div className="flex flex-col gap-10 py-7">
-      <div className="flex flex-col justify-center items-center w-fit mx-auto gap-4 bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm py-4 px-6 rounded-lg">
-        <div className="flex flex-col justify-center items-center gap-1">
-          <h1 className="text-4xl font-bold font-starjedi text-center">{filmDetails.title}</h1>
-          <p className="font-bold text-2xl font-starjedi">Episode {filmDetails.episode_id}</p>
-          <p className="text-xl">Directed by <span className="font-bold">{filmDetails.director}</span></p>
-        </div>
-
-        <Image
-          src={filmDetails.image}
-          width={204}
-          height={301}
-          alt="Film image"
-        />
-      </div>
+      <FilmDetailsCard 
+        title={filmDetails.title}
+        director={filmDetails.director}
+        episode_id={filmDetails.episode_id}
+        image={filmDetails.image}
+      />
 
       <div className="flex flex-col gap-4">
         <h2 className="text-2xl font-bold font-starjedi text-center">Characters</h2>
-
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-3">
-          {filmDetails.characters.map((character: CharacterData, index: any) => {
-            const customUrl = `/characters/${character.characterId}`;
-
-            return (
-              <li key={index} className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-                <div className="flex items-center">
-                  <div className="w-16 h-16 rounded-full overflow-hidden">
-                    <Image
-                      src={character.image}
-                      width={64}
-                      height={64}
-                      alt="Character picture"
-                    />
-                  </div>
-
-                  <div className="ml-4">
-                    <Link href={customUrl}>
-                      <p className="text-white font-bold">{character.name}</p>
-                    </Link>
-                    
-                    <Link href={customUrl}>
-                      <p className="text-gray-400 hover:text-gray-300 hover:underline">More Info</p>
-                    </Link>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        
+        <FilmCharactersList 
+          characters={filmDetails.characters}
+        />
       </div>
     </div>
   )
