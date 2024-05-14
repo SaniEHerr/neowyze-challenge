@@ -31,7 +31,7 @@ export interface SwapiResponse {
 }
 
 
-interface CharacterDetailData {
+export interface CharacterDetailData {
   name       : string;
   eye_color  : string;
   hair_color : string;
@@ -42,7 +42,7 @@ interface CharacterDetailData {
   url        : string;
 }
 
-interface CharacterDetails {
+export interface CharacterDetails {
   characterId : string;
   name        : string;
   birth_year  : string;
