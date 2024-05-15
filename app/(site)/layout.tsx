@@ -10,7 +10,7 @@ const SiteLayout = ({
     <div className="min-h-screen flex flex-col justify-center items-center">
       <Navbar />
 
-      <main className="max-w-[1280px] flex flex-col justify-start items-center flex-1">
+      <main className="max-w-[1280px] flex flex-col justify-start items-center flex-1 py-7 px-4">
         {children}
       </main>
 

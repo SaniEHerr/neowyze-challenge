@@ -1,3 +1,4 @@
+import GoBack from "@/app/(site)/_components/GoBack";
 import { capitalizeFirstLetter } from "@/app/utils/capitalizeFirstLetter";
 import Image from "next/image";
 import { notFound } from 'next/navigation';
@@ -27,7 +28,8 @@ const CharacterByIdPage = async ({params}: { params: CharacterParams }) => {
   }
 
   return (
-    <div className="py-7">
+    <div className="flex flex-col gap-4">
+      <GoBack />
       <div className="flex flex-col md:flex-row gap-8 items-center bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
         <div className="flex flex-col gap-3">
           {name && <h1 className="text-xl font-bold truncate text-center">{name}</h1>}

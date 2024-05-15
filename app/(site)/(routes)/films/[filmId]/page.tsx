@@ -1,5 +1,6 @@
 import FilmCharactersList from "@/app/(site)/_components/FilmCharactersList";
 import FilmDetailsCard from "@/app/(site)/_components/FilmDetailsCard";
+import GoBack from "@/app/(site)/_components/GoBack";
 import { FilmDetails } from "@/app/interfaces/Film";
 import { notFound } from "next/navigation";
 
@@ -27,20 +28,23 @@ const FilmByIdPage = async ({params}: { params: FilmParams }) => {
   }
   
   return (
-    <div className="flex flex-col gap-10 py-7">
-      <FilmDetailsCard 
-        title={filmDetails.title}
-        director={filmDetails.director}
-        episode_id={filmDetails.episode_id}
-        image={filmDetails.image}
-      />
-
-      <div className="flex flex-col gap-4 mx-auto">
-        <h2 className="text-2xl font-bold font-starjedi text-center">Characters</h2>
-        
-        <FilmCharactersList 
-          characters={filmDetails.characters}
+    <div className="flex flex-col">
+      <GoBack />
+      <div className="flex flex-col gap-10">
+        <FilmDetailsCard 
+          title={filmDetails.title}
+          director={filmDetails.director}
+          episode_id={filmDetails.episode_id}
+          image={filmDetails.image}
         />
+
+        <div className="flex flex-col gap-4 mx-auto">
+          <h2 className="text-2xl font-bold font-starjedi text-center">Characters</h2>
+          
+          <FilmCharactersList 
+            characters={filmDetails.characters}
+          />
+        </div>
       </div>
     </div>
   )
