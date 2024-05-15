@@ -2,11 +2,12 @@ import FilmCharactersList from "@/app/(site)/_components/FilmCharactersList";
 import FilmDetailsCard from "@/app/(site)/_components/FilmDetailsCard";
 import GoBack from "@/app/(site)/_components/GoBack";
 import { FilmDetails } from "@/app/interfaces/Film";
+import { BASE_API_URL } from "@/app/utils/constants";
 import { notFound } from "next/navigation";
 
 async function getFilmDetails(filmId: string) {
   try {
-    const response = await fetch(`http://localhost:3000/api/films/${filmId}`);
+    const response = await fetch(`${BASE_API_URL}/api/films/${filmId}`);
     const data = await response.json();
 
     return data;
@@ -21,6 +22,10 @@ interface FilmParams {
 }
 
 const FilmByIdPage = async ({params}: { params: FilmParams }) => {
+  if (!BASE_API_URL) {
+    return null
+  }
+  
   const filmDetails: FilmDetails = await getFilmDetails(params.filmId)
 
   if (!filmDetails.characters) {

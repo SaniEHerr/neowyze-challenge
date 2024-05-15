@@ -1,11 +1,12 @@
 import GoBack from "@/app/(site)/_components/GoBack";
 import { capitalizeFirstLetter } from "@/app/utils/capitalizeFirstLetter";
+import { BASE_API_URL } from "@/app/utils/constants";
 import Image from "next/image";
 import { notFound } from 'next/navigation';
 
 async function getCharacterDetails(characterId: string) {
   try {
-    const response = await fetch(`http://localhost:3000/api/characters/${characterId}`);
+    const response = await fetch(`${BASE_API_URL}/api/characters/${characterId}`);
     const data = await response.json();
     
     return data;
@@ -20,6 +21,9 @@ interface CharacterParams {
 }
 
 const CharacterByIdPage = async ({params}: { params: CharacterParams }) => {
+  if (!BASE_API_URL) {
+    return null
+  }
 
   const { name, birth_year, height, mass, eye_color, hair_color, skin_color, image  } = await getCharacterDetails(params.characterId)
 

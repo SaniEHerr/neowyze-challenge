@@ -2,10 +2,11 @@ import Filters from "@/app/(site)/_components/Filters";
 import CharactersCards from "@/app/(site)/_components/CharactersCards";
 import Pagination from "@/app/(site)/_components/Pagination";
 import GoBack from "../../_components/GoBack";
+import { BASE_API_URL } from "@/app/utils/constants";
 
 async function getCharacters(page: number, eye_color: string | undefined, gender: string | undefined) {
   try {
-    let url = `http://localhost:3000/api/characters?page=${page}`;
+    let url = `${BASE_API_URL}/api/characters?page=${page}`;
     if (eye_color) {
       url += `&eye_color=${eye_color}`;
     }
@@ -24,10 +25,14 @@ async function getCharacters(page: number, eye_color: string | undefined, gender
 }
 
 const CharactersPage = async ({searchParams}: {searchParams: { [key: string]: string | string [] |undefined }} ) => {
+  if (!BASE_API_URL) {
+    return null
+  }
+  
   const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
   const eye_color = typeof searchParams.eye_color === 'string' ? searchParams.eye_color : undefined;
   const gender = typeof searchParams.gender === 'string' ? searchParams.gender : undefined;
-
+  
   const { total_characters, total_pages, current_page, next_page, previous_page, eye_colors, genders, results } = await getCharacters(page, eye_color, gender);  
 
   return (

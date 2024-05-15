@@ -1,9 +1,10 @@
 import FilmsCards from "@/app/(site)/_components/FilmsCards";
 import GoBack from "../../_components/GoBack";
+import { BASE_API_URL } from "@/app/utils/constants";
 
 async function getFilms() {
   try {
-    const response = await fetch('http://localhost:3000/api/films');
+    const response = await fetch(`${BASE_API_URL}/api/films`);
     const data = await response.json();
 
     return data;
@@ -14,6 +15,10 @@ async function getFilms() {
 }
 
 const FilmsPage = async () => {
+  if (!BASE_API_URL) {
+    return null
+  }
+  
   const { films } = await getFilms();
   
   return (
