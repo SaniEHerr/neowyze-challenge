@@ -1,6 +1,7 @@
 import FilmCharactersList from "@/app/(site)/_components/FilmCharactersList";
 import FilmDetailsCard from "@/app/(site)/_components/FilmDetailsCard";
 import { FilmDetails } from "@/app/interfaces/Film";
+import { notFound } from "next/navigation";
 
 async function getFilmDetails(filmId: string) {
   try {
@@ -20,6 +21,10 @@ interface FilmParams {
 
 const FilmByIdPage = async ({params}: { params: FilmParams }) => {
   const filmDetails: FilmDetails = await getFilmDetails(params.filmId)
+
+  if (!filmDetails.characters) {
+    notFound();
+  }
   
   return (
     <div className="flex flex-col gap-10 py-7">

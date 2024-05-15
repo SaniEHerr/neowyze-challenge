@@ -1,7 +1,6 @@
 import { CharacterData } from "@/app/interfaces/Film";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 interface FilmCharactersListProps  {
   characters : CharacterData[];
@@ -9,12 +8,9 @@ interface FilmCharactersListProps  {
 
 const FilmCharactersList = ({ characters }: FilmCharactersListProps) => {
 
-  if (!characters) {
-    notFound();
-  }
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-3">
-      {characters.map((character: CharacterData, index: any) => {
+      {characters.map((character: CharacterData, index: number) => {
 
         return (
           <li key={index} className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
