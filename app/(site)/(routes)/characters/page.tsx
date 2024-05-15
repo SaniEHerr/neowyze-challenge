@@ -6,7 +6,7 @@ import { BASE_API_URL } from "@/app/utils/constants";
 
 async function getCharacters(page: number, eye_color: string | undefined, gender: string | undefined) {
   try {
-    let url = `https://neowyze-challenge-ijoe9lzmu-sanieherrs-projects.vercel.app/api/characters?page=${page}`;
+    let url = `/api/characters?page=${page}`;
     if (eye_color) {
       url += `&eye_color=${eye_color}`;
     }
@@ -28,7 +28,7 @@ const CharactersPage = async ({searchParams}: {searchParams: { [key: string]: st
   if (!BASE_API_URL) {
     return null
   }
-
+  
   const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
   const eye_color = typeof searchParams.eye_color === 'string' ? searchParams.eye_color : undefined;
   const gender = typeof searchParams.gender === 'string' ? searchParams.gender : undefined;

@@ -4,9 +4,9 @@ import { BASE_API_URL } from "@/app/utils/constants";
 
 async function getFilms() {
   try {
-    const response = await fetch(`https://neowyze-challenge-ijoe9lzmu-sanieherrs-projects.vercel.app/api/films`);
+    const response = await fetch(`/api/films`);
     const data = await response.json();
-
+    
     return data;
   } catch (error) {
     console.error('Error fetching characters:', error);

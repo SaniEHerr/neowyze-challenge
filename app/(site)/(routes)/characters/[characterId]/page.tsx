@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 
 async function getCharacterDetails(characterId: string) {
   try {
-    const response = await fetch(`https://neowyze-challenge-ijoe9lzmu-sanieherrs-projects.vercel.app/api/characters/${characterId}`);
+    const response = await fetch(`/api/characters/${characterId}`);
     const data = await response.json();
     
     return data;
