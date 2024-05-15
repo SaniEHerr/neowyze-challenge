@@ -30,7 +30,7 @@ const FilmByIdPage = async ({params}: { params: FilmParams }) => {
         image={filmDetails.image}
       />
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mx-auto">
         <h2 className="text-2xl font-bold font-starjedi text-center">Characters</h2>
         
         <FilmCharactersList 

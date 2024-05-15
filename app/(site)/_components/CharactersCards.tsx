@@ -9,7 +9,7 @@ interface CharactersCardsProps {
 
 const CharactersCards = ({ results }: CharactersCardsProps) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
       {results.map((character: CharacterData) => (
         <div key={character.name} className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm shadow-md rounded-lg overflow-hidden p-4 flex flex-col justify-between gap-3">
           <div className='flex flex-col gap-3 items-center'>

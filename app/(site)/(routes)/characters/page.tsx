@@ -24,19 +24,19 @@ const CharactersPage = async ({searchParams}: {searchParams: { [key: string]: st
   const { total_characters, total_pages, current_page, next_page, previous_page, eye_colors, results } = await getCharacters(page, eye_color);
 
   return (
-    <div className="max-w-[1420px] mx-auto py-7 flex flex-col gap-10 px-4 lg:px-0">
+    <div className="max-w-[1420px] mx-auto py-7 flex flex-col gap-10 px-4">
 
       <div className="flex flex-col gap-7">
         <h2 className="text-4xl text-center font-bold font-starjhol underline">Characters</h2>
 
-        <Filters 
+        <Filters
           eye_colors={eye_colors}
           selectedEyeColor={eye_color}
         />
       </div>
 
       <div className="flex flex-col gap-8">
-        <CharactersCards 
+        <CharactersCards
           results={results}
         />
       </div>

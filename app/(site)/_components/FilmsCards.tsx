@@ -13,7 +13,7 @@ const FilmsCards = ({ films }: FilmsCardsProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md1:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
       {films.map((film: Film, index: number) => (
           <div 
             className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg flex flex-col justify-between gap-3"

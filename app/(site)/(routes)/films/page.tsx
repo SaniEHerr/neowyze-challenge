@@ -16,8 +16,8 @@ const FilmsPage = async () => {
   const { films } = await getFilms();
   
   return (
-    <div className="max-w-[1420px] mx-auto py-7">
-      <h1 className="text-4xl text-center font-bold mb-8 font-starjhol underline">Episodes</h1>
+    <div className="max-w-[1420px] mx-auto py-7 flex flex-col gap-8">
+      <h1 className="text-4xl text-center font-bold font-starjhol underline">Episodes</h1>
 
       <FilmsCards
         films={films}

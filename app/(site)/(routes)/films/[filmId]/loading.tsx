@@ -16,7 +16,7 @@ const Loading = () => {
 
       </div>
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 mx-auto">
         <div className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm h-[28px] w-[180px] mx-auto rounded-lg animate-pulse duration-300"></div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-3">
