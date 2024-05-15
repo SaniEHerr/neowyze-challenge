@@ -16,7 +16,7 @@ const starjedi = localFont({
 })
 
 const starjhol = localFont({
-  src: './assets/fonts/starjhol.ttf',
+  src: './assets/fonts/Starjhol.ttf',
   display: 'swap',
   variable: '--font-starjhol'
 })
