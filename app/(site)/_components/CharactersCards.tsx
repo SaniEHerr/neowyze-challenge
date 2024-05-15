@@ -18,6 +18,7 @@ const CharactersCards = ({ results }: CharactersCardsProps) => {
               src={character.image}
               width={204}
               height={285.25}
+              priority
               alt="Character picture"
             />
             <div className='flex flex-col items-center text-lg'>
@@ -37,7 +38,7 @@ const CharactersCards = ({ results }: CharactersCardsProps) => {
 
           <div className='flex justify-center'>
             <Link href={`/characters/${character.character_id}`}>
-              <p className='text-base hover:text-[#FFE81F] transition-colors duration-300 font-semibold md:font-normal underline md:no-underline hover:underline hover:font-semibold'>Know more</p>
+              <p className='text-base hover:text-[#FFE81F] transition-colors duration-200 font-semibold md:font-normal underline md:no-underline hover:underline hover:font-semibold'>Know more</p>
             </Link>
           </div>
         </div>

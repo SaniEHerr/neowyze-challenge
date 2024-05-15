@@ -20,6 +20,7 @@ const FilmDetailsCard = ({ title, director, episode_id, image }: FilmDetailsCard
         src={image}
         width={204}
         height={301}
+        priority
         alt="Film image"
       />
     </div>

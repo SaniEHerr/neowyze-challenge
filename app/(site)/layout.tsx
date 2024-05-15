@@ -1,7 +1,7 @@
-import Footer from "../_components/Footer"
-import Navbar from "../_components/Navbar"
+import Footer from "@/app/_components/Footer"
+import Navbar from "@/app/_components/Navbar"
 
-const SiteLayout = ({
+const CharacterLayout = ({
   children,
 }: {
   children: React.ReactNode
@@ -19,4 +19,4 @@ const SiteLayout = ({
   )
 }
 
-export default SiteLayout
+export default CharacterLayout

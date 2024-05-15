@@ -1,4 +1,4 @@
-import FilmsCards from "../../_components/FilmsCards";
+import FilmsCards from "@/app/(site)/_components/FilmsCards";
 
 async function getFilms() {
   try {

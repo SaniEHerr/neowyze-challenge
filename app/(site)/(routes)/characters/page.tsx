@@ -1,6 +1,6 @@
-import Filters from "../../_components/Filters"
-import CharactersCards from "../../_components/CharactersCards"
-import Pagination from "../../_components/Pagination"
+import Filters from "@/app/(site)/_components/Filters";
+import CharactersCards from "@/app/(site)/_components/CharactersCards";
+import Pagination from "@/app/(site)/_components/Pagination";
 
 async function getCharacters(page: number, eye_color: string | undefined) {
   try {

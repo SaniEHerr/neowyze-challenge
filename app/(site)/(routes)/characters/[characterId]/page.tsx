@@ -13,7 +13,11 @@ async function getCharacterDetails(characterId: string) {
   }
 }
 
-const CharacterByIdPage = async ({params}: any) => {
+interface CharacterParams {
+  characterId: string;
+}
+
+const CharacterByIdPage = async ({params}: { params: CharacterParams }) => {
 
   const { name, birth_year, height, mass, eye_color, hair_color, skin_color, image  } = await getCharacterDetails(params.characterId)
 
@@ -27,6 +31,7 @@ const CharacterByIdPage = async ({params}: any) => {
               src={image}
               width={204}
               height={362}
+              priority
               alt="Character picture"
             />
           }

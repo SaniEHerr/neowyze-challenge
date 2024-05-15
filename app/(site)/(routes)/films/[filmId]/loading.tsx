@@ -1,7 +1,9 @@
 import React from 'react'
 
 const Loading = () => {
-  const skeleton = Array.from({ length: 24 }).map((_, index) => ({}));
+  const skeleton = Array.from({ length: 24 }).map((_, index) => ({
+    id: `skeleton-${index}-${Date.now()}`,
+  }));
 
   return (
     <div className="flex flex-col gap-10 py-7">
@@ -23,7 +25,7 @@ const Loading = () => {
           {skeleton.map(( index: any) => {
 
             return (
-              <div key={index} className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg w-[258.14px] h-[95.97px] animate-pulse duration-300">
+              <div key={index.id} className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 rounded-lg w-[258.14px] h-[95.97px] animate-pulse duration-300">
                 <div className="flex items-center">
                   <div className="bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm p-4 w-[64px] h-[64px] rounded-full"></div>
 
