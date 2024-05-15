@@ -1,14 +1,11 @@
 import { CharacterData } from '@/app/interfaces/Character';
 import Image from 'next/image';
 import Link from 'next/link'
+import { capitalizeFirstLetter } from '@/app/utils/capitalizeFirstLetter';
 
 interface CharactersCardsProps {
   results : CharacterData[];
 }
-
-const capitalizeFirstLetter = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
 
 const CharactersCards = ({ results }: CharactersCardsProps) => {
   return (
@@ -24,8 +21,17 @@ const CharactersCards = ({ results }: CharactersCardsProps) => {
               alt="Character picture"
             />
             <div className='flex flex-col items-center text-lg'>
-              {character.eye_color && <p className="font-semibold">Eye color: <span className='font-normal'>{capitalizeFirstLetter(character.eye_color)}</span> </p>}
-              {character.gender && <p className="font-semibold">Gender: <span className='font-normal'>{capitalizeFirstLetter(character.gender)}</span></p>}
+              {character.eye_color && 
+                <p className="font-semibold">Eye color: 
+                  <span className='font-normal'> {capitalizeFirstLetter(character.eye_color)} </span>
+                </p>
+              }
+              
+              {character.gender && 
+                <p className="font-semibold">Gender: 
+                  <span className='font-normal'> {capitalizeFirstLetter(character.gender)} </span>
+                </p>
+              }
             </div>
           </div>
 

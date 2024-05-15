@@ -1,3 +1,4 @@
+import { capitalizeFirstLetter } from "@/app/utils/capitalizeFirstLetter";
 import Image from "next/image";
 
 async function getCharacterDetails(characterId: string) {
@@ -31,13 +32,13 @@ const CharacterByIdPage = async ({params}: any) => {
           }
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-2">
           {birth_year && <p className="font-semibold">Birth year: <span className='font-normal'>{birth_year}</span></p>}
           {height && <p className="font-semibold">Height: <span className='font-normal'>{height} cm</span></p>}
           {mass && <p className="font-semibold">Mass: <span className='font-normal'>{mass} kg</span></p>}
-          {eye_color && <p className="font-semibold">Eye color: <span className='font-normal'>{eye_color}</span></p>}
-          {hair_color && <p className="font-semibold">Hair color: <span className='font-normal'>{hair_color}</span></p>}
-          {skin_color && <p className="font-semibold">Skin color: <span className='font-normal'>{skin_color}</span></p>}
+          {eye_color && <p className="font-semibold">Eye color: <span className='font-normal'> {capitalizeFirstLetter(eye_color)}</span></p>}
+          {hair_color && <p className="font-semibold">Hair color: <span className='font-normal'>{capitalizeFirstLetter(hair_color)}</span></p>}
+          {skin_color && <p className="font-semibold">Skin color: <span className='font-normal'>{capitalizeFirstLetter(skin_color)}</span></p>}
         </div>
       </div>
     </div>
