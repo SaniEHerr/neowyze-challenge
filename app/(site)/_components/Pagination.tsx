@@ -7,13 +7,14 @@ interface PaginationProps {
   total_pages : number;
   page        : number;
   eye_color   : string | undefined;
+  gender      : string | undefined;
 }
 
-const Pagination = ({ total_pages, page, eye_color }: PaginationProps) => {
+const Pagination = ({ total_pages, page, eye_color, gender }: PaginationProps) => {
   const router = useRouter();
 
   const handlePageChange = (pageIndex: number) => {
-    router.push(`/characters?page=${pageIndex}${eye_color ? `&eye_color=${eye_color}` : ""}`);
+    router.push(`/characters?page=${pageIndex}${eye_color ? `&eye_color=${eye_color}` : ""}${gender ? `&gender=${gender}` : ""}`);
   };
 
   const renderPaginationButtons = () => {

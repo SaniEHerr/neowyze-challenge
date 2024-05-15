@@ -39,10 +39,39 @@ async function fetchAllEyeColors() {
   return Array.from(allEyeColors);
 }
 
+async function fetchAllGenders() {
+  // Create a set to store all genders
+  const allGenders = new Set<string>();
+  
+  // Set the URL for the first page of the API
+  let nextPage: string | null = 'https://swapi.dev/api/people';
+
+  // Start a loop to iterate through all pages of the API
+  while (nextPage) {
+    const response = await fetch(nextPage);
+    const data: SwapiResponse = await response.json();
+    
+    // Iterate through the results of the response to retrieve genders
+    data.results.forEach((character: Character) => {
+      // Filter out characters whose gender value is not "n/a" or "unknown"
+      if (character.gender !== "n/a" && character.gender !== "unknown") {
+        allGenders.add(character.gender);
+      }
+    });
+    
+    // Update the URL for the next page of the API
+    nextPage = data.next;
+  }
+  
+  // Convert the set of genders into an array
+  return Array.from(allGenders);
+}
+
 export async function GET(request: Request): Promise<NextResponse> {
   try {
     // Get all eye colors.
     const eyeColors = await fetchAllEyeColors();
+    const genders = await fetchAllGenders();
 
     // Set a generic URL for the character image
     const genericImageUrl = '/character-image.jpg';
@@ -52,6 +81,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     const limit: number = 10;
     const page: number = parseInt(url.searchParams.get('page') || '1');
     const eyeColor: string | null = url.searchParams.get('eye_color');
+    const gender: string | null = url.searchParams.get('gender');
 
     // Initialize variables to store all characters and the total character count
     const allCharacters: Character[] = [];
@@ -75,13 +105,22 @@ export async function GET(request: Request): Promise<NextResponse> {
       nextPage = data.next;
     }
 
-    // Filter characters based on eye color if provided
-    const filteredCharacters = eyeColor
-      ? allCharacters.filter((character: Character) => {
-          // Check if any of the character's eye colors match the specified color
-          return character.eye_color.split(',').some((color: string) => color.trim() === eyeColor);
-        })
-      : allCharacters;
+    // Filtrar personajes basados en eye_color si se proporciona
+    let filteredCharacters = allCharacters;
+    if (eyeColor) {
+      filteredCharacters = filteredCharacters.filter((character: Character) => {
+        // Verificar si alguno de los eye_colors del personaje coincide con el color especificado
+        return character.eye_color.split(',').some((color: string) => color.trim() === eyeColor);
+      });
+    }
+
+    // Filtrar personajes basados en gender si se proporciona
+    if (gender) {
+      filteredCharacters = filteredCharacters.filter((character: Character) => {
+        // Verificar si el gender del personaje coincide con el gender especificado
+        return character.gender === gender;
+      });
+    }
 
     // Calculate the total pages based on the limit of characters per page
     const total_pages = Math.ceil(filteredCharacters.length / limit);
@@ -123,9 +162,10 @@ export async function GET(request: Request): Promise<NextResponse> {
       total_characters: filteredCharacters.length,
       total_pages,
       current_page: currentPage,
-      next_page: currentPage < total_pages ? `/characters?page=${currentPage + 1}&eye_color=${eyeColor}` : null,
-      previous_page: currentPage > 1 ? `/characters?page=${currentPage - 1}&eye_color=${eyeColor}` : null,
+      next_page: currentPage < total_pages ? `/characters?page=${currentPage + 1}&eye_color=${eyeColor}&gender=${gender}` : null,
+      previous_page: currentPage > 1 ? `/characters?page=${currentPage - 1}&eye_color=${eyeColor}&gender=${gender}` : null,
       eye_colors: eyeColors,
+      genders: genders,
       results: charactersData,
     };
 

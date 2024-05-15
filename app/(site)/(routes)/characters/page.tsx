@@ -3,14 +3,19 @@ import CharactersCards from "@/app/(site)/_components/CharactersCards";
 import Pagination from "@/app/(site)/_components/Pagination";
 import GoBack from "../../_components/GoBack";
 
-async function getCharacters(page: number, eye_color: string | undefined) {
+async function getCharacters(page: number, eye_color: string | undefined, gender: string | undefined) {
   try {
     let url = `http://localhost:3000/api/characters?page=${page}`;
     if (eye_color) {
       url += `&eye_color=${eye_color}`;
     }
+    if (gender) {
+      url += `&gender=${gender}`;
+    }
+    
     const response = await fetch(url);
     const data = await response.json();
+    
     return data;
   } catch (error) {
     console.error('Error fetching characters:', error);
@@ -21,8 +26,9 @@ async function getCharacters(page: number, eye_color: string | undefined) {
 const CharactersPage = async ({searchParams}: {searchParams: { [key: string]: string | string [] |undefined }} ) => {
   const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
   const eye_color = typeof searchParams.eye_color === 'string' ? searchParams.eye_color : undefined;
+  const gender = typeof searchParams.gender === 'string' ? searchParams.gender : undefined;
 
-  const { total_characters, total_pages, current_page, next_page, previous_page, eye_colors, results } = await getCharacters(page, eye_color);
+  const { total_characters, total_pages, current_page, next_page, previous_page, eye_colors, genders, results } = await getCharacters(page, eye_color, gender);  
 
   return (
     <div className="max-w-[1420px] mx-auto flex flex-col gap-10">
@@ -34,7 +40,9 @@ const CharactersPage = async ({searchParams}: {searchParams: { [key: string]: st
 
         <Filters
           eye_colors={eye_colors}
+          genders={genders}
           selectedEyeColor={eye_color}
+          selectedGender={gender}
         />
       </div>
 
@@ -48,6 +56,7 @@ const CharactersPage = async ({searchParams}: {searchParams: { [key: string]: st
         total_pages={total_pages}
         page={page}
         eye_color={eye_color}
+        gender={gender}
       />
 
     </div>

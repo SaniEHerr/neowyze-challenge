@@ -20,6 +20,7 @@ export interface ResponseData {
   next_page        : string | null;
   previous_page    : string | null;
   eye_colors       : string[];
+  genders          : string[];
   results          : CharacterData[];
 }
 
