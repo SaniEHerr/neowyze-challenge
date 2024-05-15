@@ -1,5 +1,6 @@
 import { capitalizeFirstLetter } from "@/app/utils/capitalizeFirstLetter";
 import Image from "next/image";
+import { notFound } from 'next/navigation';
 
 async function getCharacterDetails(characterId: string) {
   try {
@@ -20,6 +21,10 @@ interface CharacterParams {
 const CharacterByIdPage = async ({params}: { params: CharacterParams }) => {
 
   const { name, birth_year, height, mass, eye_color, hair_color, skin_color, image  } = await getCharacterDetails(params.characterId)
+
+  if (!name) {
+    notFound();
+  }
 
   return (
     <div className="py-7">
