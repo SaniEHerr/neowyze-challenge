@@ -1,6 +1,6 @@
 import React from 'react'
 
-const loading = () => {
+const Loading = () => {
   return (
     <div className="py-7">
       <div className="p-4 flex flex-col md:flex-row gap-8 items-center w-[236px] h-[477.25] md:w-[420px] md:h-[357.21px] bg-zinc-700 bg-opacity-60 backdrop-filter backdrop-blur-sm rounded-lg animate-pulse duration-300">
@@ -23,4 +23,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default Loading
