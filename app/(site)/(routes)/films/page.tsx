@@ -4,7 +4,7 @@ import { BASE_API_URL } from "@/app/utils/constants";
 
 async function getFilms() {
   try {
-    const response = await fetch(`${BASE_API_URL}/api/films`);
+    const response = await fetch(`https://neowyze-challenge-ijoe9lzmu-sanieherrs-projects.vercel.app/api/films`);
     const data = await response.json();
 
     return data;

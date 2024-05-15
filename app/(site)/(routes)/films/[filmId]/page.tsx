@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 
 async function getFilmDetails(filmId: string) {
   try {
-    const response = await fetch(`${BASE_API_URL}/api/films/${filmId}`);
+    const response = await fetch(`https://neowyze-challenge-ijoe9lzmu-sanieherrs-projects.vercel.app/api/films/${filmId}`);
     const data = await response.json();
 
     return data;
@@ -25,7 +25,7 @@ const FilmByIdPage = async ({params}: { params: FilmParams }) => {
   if (!BASE_API_URL) {
     return null
   }
-  
+
   const filmDetails: FilmDetails = await getFilmDetails(params.filmId)
 
   if (!filmDetails.characters) {
